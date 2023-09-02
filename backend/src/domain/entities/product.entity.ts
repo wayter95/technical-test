@@ -17,7 +17,7 @@ export class Product {
   private readonly _freightValue: number;
   private readonly _discountPercentage: number;
   private readonly _createdAt: Date;
-  private readonly _updateAt: Date;
+  private readonly _updatedAt: Date;
   private readonly _isActive: boolean;
 
   constructor(
@@ -31,7 +31,7 @@ export class Product {
     this._freightValue = props.freightValue;
     this._discountPercentage =props.discountPercentage;
     this._createdAt = new Date();
-    this._updateAt =  new Date();
+    this._updatedAt =  new Date();
     this._isActive = true;
   }
 
@@ -63,8 +63,8 @@ export class Product {
     return this._createdAt;
   }
 
-  get updateAt(): Date {
-    return this._updateAt;
+  get updatedAt(): Date {
+    return this._updatedAt;
   }
 
   get isActive(): boolean {
