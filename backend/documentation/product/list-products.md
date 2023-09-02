@@ -12,4 +12,4 @@
 
 ## Exceções
 1. [ ] Retornar 404 caso rota não exista
-3. [ ] Retornar 500 caso encontre erro no servidor
+2. [ ] Retornar 500 caso encontre erro no servidor

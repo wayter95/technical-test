@@ -1,6 +1,7 @@
 # Buscar Produto por Id
 
 > ## Dados
+* id
 * Nome
 * Descrição
 * Preço
@@ -13,5 +14,5 @@
 ## Exceções
 1. [ ] Retornar 404 caso rota não exista
 2. [ ] Retornar 409 caso o produto não exista
-2. [ ] Retornar 400 caso o produto não esteja ativo
-3. [ ] Retornar 500 caso encontre erro no servidor
+3. [ ] Retornar 400 caso o produto não esteja ativo
+4. [ ] Retornar 500 caso encontre erro no servidor
