@@ -5,7 +5,8 @@
 * Nome
 * Descrição
 * Preço
-* Porcentagem de descono
+* Valor do frete
+* Porcentagem de desconto
 
 > ## Fluxo primário
 1. [ ] Buscar produto por id
