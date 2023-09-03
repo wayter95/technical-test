@@ -7,4 +7,8 @@ export default {
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
   preset: 'ts-jest',
+  moduleNameMapper: {
+    '^src/(.*)$': '<rootDir>/src/$1',
+    '^test/(.*)$': '<rootDir>/test/$1',
+  }
 } as Config.InitialOptions;

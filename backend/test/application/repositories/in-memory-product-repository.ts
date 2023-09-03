@@ -2,6 +2,11 @@ import { Product } from "src/domain/entities/product.entity";
 import { ProductRepository } from "src/infra/database/repositories/product-repository";
 
 export class InMemoryProductRepository implements ProductRepository {
+  async create(product: Product): Promise<Product> {
+    this.items.push(product);
+
+    return product;
+  }
   public items: Array<Product> = [];
 
   async list(): Promise<[] | Product[]> {
@@ -14,7 +19,7 @@ export class InMemoryProductRepository implements ProductRepository {
     return products;
   }
 
-  async findById(id: string): Promise<Product> {
+  async findById(id: string): Promise<null | Product>  {
     const product = this.items.find((item) => item.id === id);
 
     if(!product) return null;
