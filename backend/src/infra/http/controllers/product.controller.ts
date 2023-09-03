@@ -1,7 +1,9 @@
 import { Controller, Get, Res } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { Response } from "express";
 import { ListProductUseCase } from "src/application/use-cases/product/list-product.use-case";
 
+@ApiTags("Produto")
 @Controller('product')
 export class ProductController {
   constructor(private readonly listProductUseCase: ListProductUseCase) { }
