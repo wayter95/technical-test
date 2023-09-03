@@ -8,6 +8,12 @@ import { ProductMapper } from "../mapper/product.mapper";
 export class PrismaProductRepository implements ProductRepository {
   constructor(private readonly prismaService: PrismaService) { }
 
+  async create(product: Product): Promise<Product> {
+    await this.prismaService.product.create({ data: ProductMapper.toPersistence(product) })
+
+    return product;
+  }
+
   async list(): Promise<[] | Product[]> {
     const products = await this.prismaService.product.findMany({
       where: { isActive: true },
@@ -27,13 +33,13 @@ export class PrismaProductRepository implements ProductRepository {
 
   async findById(id: string): Promise<null | Product> {
     const product = await this.prismaService.product.findUnique({
-      where: { 
+      where: {
         id,
         isActive: true,
-       }
+      }
     })
 
-    if(!product) return null;
+    if (!product) return null;
 
     return ProductMapper.toDomain(product);
   }
