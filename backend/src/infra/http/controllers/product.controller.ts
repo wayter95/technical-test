@@ -6,6 +6,7 @@ import { ProductByIdNotFoundError } from "src/application/use-cases/product/erro
 import { FindProductByIdUseCase } from "src/application/use-cases/product/find-product-by-id.use-case";
 import { ListProductUseCase } from "src/application/use-cases/product/list-product.use-case";
 import { Product } from "src/domain/entities/product.entity";
+import { ProductMapper } from "src/infra/database/prisma/mapper/product.mapper";
 
 @ApiTags("Produto")
 @Controller('product')
@@ -23,30 +24,22 @@ export class ProductController {
     @Param('id') id: string,
     @Res() response: Response,
   ) {
-    try {
-      const result = await this.findProductByIdUseCase.handle(id);
 
+    const result = await this.findProductByIdUseCase.handle(id);
+
+    if (result instanceof Product) {
+      const product = ProductMapper.toDTO(result);
       return response.status(200).json({
         success: true,
-        message: "Server error",
-        data: result
+        message: "Success",
+        data: product
       })
-    } catch (error) {
-      if (
-        error instanceof ProductByIdNotFoundError ||
-        error instanceof InactiveProductError) {
-        return response.status(error.statusCode).json({
-          success: false,
-          message: error.message
-        });
-      }
-
-      return response.status(500).json({
-        success: false,
-        message: "Server error",
-        error
-      });
     }
+
+    return response.status(result.statusCode).json({
+      success: false,
+      message: result.message
+    });
   }
 
   @Get("")
@@ -58,10 +51,12 @@ export class ProductController {
     try {
       const result = await this.listProductUseCase.handle();
 
+      const responseObjects = result.map(product => ProductMapper.toDTO(product));
+
       return response.status(200).json({
         success: true,
-        message: "Server error",
-        data: result
+        message: "Success",
+        data: responseObjects
       })
     } catch (error) {
       return response.status(500).json({

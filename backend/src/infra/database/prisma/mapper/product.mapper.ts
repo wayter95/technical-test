@@ -15,6 +15,21 @@ export class ProductMapper {
     return product;
   }
 
+  static toDTO(product: Product): any {
+    return {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      photoUrl: product.photoUrl,
+      value: product.value,
+      discountPercentage: product.discountPercentage,
+      freightValue: product.freightValue,
+      isActive: product.isActive,
+      createdAt: product.createdAt,
+      updatedAt: product.updatedAt,
+    };
+  }
+
   static toPersistence(product: Product): Prisma.ProductCreateInput {
     return {
       id: product.id,
