@@ -26,4 +26,10 @@ describe("ListProductUseCase", () => {
       ])
     );
   })
+
+  it("should return an empty array if no exist products", async () => {
+    const products = await listProductUseCase.handle();
+    
+    expect(products).toEqual([]);
+  });
 })
