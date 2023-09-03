@@ -1,3 +1,4 @@
+import { InactiveProductError } from "src/application/use-cases/product/errors/inactive-product";
 import { ProductByIdNotFoundError } from "src/application/use-cases/product/errors/product-not-found.error";
 import { FindProductByIdUseCase } from "src/application/use-cases/product/find-product-by-id.use-case";
 import { Product } from "src/domain/entities/product.entity";
@@ -25,5 +26,20 @@ describe("FindProductByIdUseCase", () => {
 
   it('should throw 409 if product does not exist', async () => {
     await expect(findProductByIdUseCase.handle("invalid_id")).rejects.toThrow(ProductByIdNotFoundError);
+  });
+
+  it('should throw 400 if product is not active', async () => {
+    const inactiveProduct = new Product({
+      name: "Teste Inativo", 
+      description: "Teste", 
+      value: 30, 
+      discountPercentage: 10, 
+      freightValue: 0, 
+      isActive: false
+    });
+
+    const result = await productRepository.create(inactiveProduct);
+
+    await expect(findProductByIdUseCase.handle(inactiveProduct.id)).rejects.toThrow(InactiveProductError);
   });
 })

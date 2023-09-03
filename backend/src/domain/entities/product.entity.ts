@@ -8,6 +8,7 @@ interface ProductProps {
   value: number;
   freightValue: number;
   discountPercentage: number;
+  isActive?: boolean;
 }
 
 export class Product {
@@ -31,9 +32,9 @@ export class Product {
     this._value = props.value;
     this._freightValue = props.freightValue;
     this._discountPercentage =props.discountPercentage;
+    this._isActive = props.isActive === undefined ? true : props.isActive;
     this._createdAt = new Date();
     this._updatedAt =  new Date();
-    this._isActive = true;
   }
 
   @ApiProperty()
