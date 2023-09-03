@@ -5,6 +5,7 @@ interface ProductProps {
   id?: string;
   name: string;
   description: string;
+  photoUrl: string;
   value: number;
   freightValue: number;
   discountPercentage: number;
@@ -15,6 +16,7 @@ export class Product {
   private readonly _id: string;
   private readonly _name: string;
   private readonly _description: string;
+  private readonly _photoUrl: string;
   private readonly _value: number;
   private readonly _freightValue: number;
   private readonly _discountPercentage: number;
@@ -29,6 +31,7 @@ export class Product {
     this._id = id || uuidv4();
     this._name = props.name;
     this._description = props.description;
+    this._photoUrl = props.photoUrl;
     this._value = props.value;
     this._freightValue = props.freightValue;
     this._discountPercentage =props.discountPercentage;
@@ -50,6 +53,11 @@ export class Product {
   @ApiProperty()
   get description(): string {
     return this._description;
+  }
+
+  @ApiProperty()
+  get photoUrl(): string {
+    return this._photoUrl;
   }
 
   @ApiProperty()

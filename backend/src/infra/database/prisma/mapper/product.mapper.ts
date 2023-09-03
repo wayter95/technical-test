@@ -6,6 +6,7 @@ export class ProductMapper {
     const product = new Product({
       name: raw.name,
       description: raw.description,
+      photoUrl: raw.photoUrl,
       value: raw.value,
       discountPercentage: raw.discountPercentage,
       freightValue: raw.freightValue
@@ -19,6 +20,7 @@ export class ProductMapper {
       id: product.id,
       name: product.name,
       description: product.description,
+      photoUrl: product.photoUrl,
       value: product.value,
       discountPercentage: product.discountPercentage,
       freightValue: product.freightValue,
