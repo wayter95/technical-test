@@ -3,18 +3,53 @@ import { InvalidPasswordError } from "src/application/use-cases/account/errors/i
 import { SigInUseCase } from "src/application/use-cases/account/signin.use-case";
 import { Account } from "src/domain/entities/account.entity";
 import { AccountRepository } from "src/infra/database/repositories/account-repository";
+import { GenerateAuthToken } from "src/infra/providers/generate-auth-token";
 import { InMemoryAccountRepository } from "test/repositories/in-memory-account.repository";
+import * as bcrypt from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 
-describe("SignInUseCase",  () => {
+jest.mock('jsonwebtoken', () => ({
+  ...jest.requireActual('jsonwebtoken'),
+  sign: jest.fn().mockReturnValue('mockedToken'),
+}));
+
+describe("SignInUseCase", () => {
   let accountRepository: AccountRepository;
-
+  let generateAuthToken: GenerateAuthToken
   let sigInUseCase: SigInUseCase;
 
   beforeEach(() => {
     accountRepository = new InMemoryAccountRepository();
-
-    sigInUseCase = new SigInUseCase(accountRepository);
+    generateAuthToken = new GenerateAuthToken();
+    sigInUseCase = new SigInUseCase(accountRepository, generateAuthToken);
   });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("should successfully signin", async () => {
+    const hashedPassword = await bcrypt.hash("valid_password", 12)
+
+    const account = new Account({
+      email: "valid_email",
+      fullName: "valid_full_name",
+      password: hashedPassword,
+      phone: "valid_phone"
+    });
+  
+    await accountRepository.create(account);
+
+    const request = {
+      email: "valid_email",
+      password: "valid_password",
+    };
+  
+    const result: any = await sigInUseCase.handle(request);
+  
+    expect(result.token).toBeDefined(); 
+    expect(result.account).toEqual(account);
+  })
 
   it("should return 400 if password no matched", async () => {
     const account = new Account({
@@ -24,7 +59,7 @@ describe("SignInUseCase",  () => {
       phone: "valid_phone"
     });
 
-    const result = await accountRepository.create(account);
+    await accountRepository.create(account);
 
     const request = {
       email: "valid_email",
@@ -39,7 +74,7 @@ describe("SignInUseCase",  () => {
       email: "valid_email",
       password: "valid_password",
     };
-  
+
     await expect(sigInUseCase.handle(request)).rejects.toThrow(AccountByEmailNotFoundError);
   })
 })
