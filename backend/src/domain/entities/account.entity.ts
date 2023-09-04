@@ -35,6 +35,10 @@ export class Account {
   }
 
   @ApiProperty()
+  get id(): string {
+    return this._id;
+  }
+
   get fullName(): string {
     return this._fullName;
   }
