@@ -7,6 +7,7 @@ import { FindProductByIdUseCase } from "src/application/use-cases/product/find-p
 import { ListProductUseCase } from "src/application/use-cases/product/list-product.use-case";
 import { Product } from "src/domain/entities/product.entity";
 import { ProductMapper } from "src/infra/database/prisma/mapper/product.mapper";
+import { Public } from "../auth/public";
 
 @ApiTags("Produto")
 @Controller('product')
@@ -17,6 +18,7 @@ export class ProductController {
   ) { }
 
 
+  @Public()
   @Get(":id")
   @ApiOkResponse({ status: 200, description: "Listar produtos ativos", type: Product })
   @ApiResponse({ status: 500, description: "Erro ao executar" })
@@ -42,6 +44,7 @@ export class ProductController {
     });
   }
 
+  @Public()
   @Get("")
   @ApiOkResponse({ isArray: true, status: 200, description: "Listar produtos ativos", type: Product })
   @ApiResponse({ status: 500, description: "Erro ao executar" })
