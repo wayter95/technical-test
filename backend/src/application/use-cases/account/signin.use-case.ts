@@ -4,21 +4,28 @@ import { AccountByEmailNotFoundError } from "./errors/account-by-email-not-found
 import { Account } from "src/domain/entities/account.entity";
 import { compare } from 'bcrypt';
 import { InvalidPasswordError } from "./errors/invalid-password.error";
+import { GenerateAuthToken } from "src/infra/providers/generate-auth-token";
 
 type SigInUseCaseRequest = {
   email: string;
   password: string;
 }
 
-type SigInUseCaseResponse = Account | AccountByEmailNotFoundError;
+type SigInUseCaseResponse =
+  { token: string, account: Account }
+  | AccountByEmailNotFoundError
+  | InvalidPasswordError;
 @Injectable()
 export class SigInUseCase {
-  constructor (private readonly accountRepository: AccountRepository) {}
+  constructor(
+    private readonly accountRepository: AccountRepository,
+    private readonly generateAuthToken: GenerateAuthToken,
+  ) { }
 
   async handle(request: SigInUseCaseRequest): Promise<SigInUseCaseResponse> {
     const account = await this.accountRepository.findByEmail(request.email);
 
-    if(!account) {
+    if (!account) {
       throw new AccountByEmailNotFoundError()
     }
 
@@ -28,6 +35,9 @@ export class SigInUseCase {
       throw new InvalidPasswordError()
     }
 
-    return account;
+    const claims = { uid: account.id, email: account.email };
+    const token = await this.generateAuthToken.execute(claims);
+
+    return { token, account };
   }
 }
