@@ -9,6 +9,8 @@ RUN yarn
 COPY . . 
 
 RUN yarn prisma generate
+RUN yarn prisma db push
+RUN yarn prisma db seed
 
 EXPOSE 5050
 
