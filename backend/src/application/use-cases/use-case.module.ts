@@ -5,6 +5,7 @@ import { FindProductByIdUseCase } from "./product/find-product-by-id.use-case";
 import { SignUpUseCase } from "./account/signup.use-case";
 import { ProvidersModule } from "src/infra/providers/providers.module";
 import { SigInUseCase } from "./account/signin.use-case";
+import { CreateOrderUseCase } from "./order/create-order.use-case";
 
 @Module({
   imports: [DatabaseModule, ProvidersModule],
@@ -12,13 +13,15 @@ import { SigInUseCase } from "./account/signin.use-case";
     ListProductUseCase,
     FindProductByIdUseCase,
     SignUpUseCase,
-    SigInUseCase
+    SigInUseCase,
+    CreateOrderUseCase
   ],
   exports: [
     ListProductUseCase,
     FindProductByIdUseCase,
     SignUpUseCase,
     SigInUseCase,
+    CreateOrderUseCase,
   ],
 })
 
