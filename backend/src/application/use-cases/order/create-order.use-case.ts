@@ -16,7 +16,7 @@ type CreateOrderUseCaseRequest = {
   products: ProductOrderProps[];
 }
 
-type CreateOrderUseCaseResponse = Order
+type CreateOrderUseCaseResponse = Order | ProductByIdNotFoundError;
 
 @Injectable()
 export class CreateOrderUseCase {
