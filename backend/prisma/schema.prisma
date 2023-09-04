@@ -26,7 +26,7 @@ model Product {
 model Account {
   id        String   @id @default(uuid())
   fullName  String
-  email     String
+  email     String   @unique
   phone     String
   password  String
   createdAt DateTime @default(now())

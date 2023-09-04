@@ -8,7 +8,7 @@ export class AccountMapper {
       email: raw.email,
       phone: raw.phone,
       password: raw.password
-    })
+    }, raw.id)
 
     return account;
   }
