@@ -15,6 +15,19 @@ describe("SignUpUseCase",  () => {
     signUpUseCase = new SignUpUseCase(accountRepository);
   });
 
+  it("should successfully register account", async () => {
+    const account = new Account({
+      email: "valid_email",
+      fullName: "valid_full_name",
+      password: "valid_password",
+      phone: "valid_phone"
+    });
+
+    const result = await accountRepository.create(account);
+
+    expect(result).toEqual(account);
+  })
+
   it("should return 409 if account by email already exist", async () => {
     const account = new Account({
       email: "valid_email",
