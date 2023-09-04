@@ -2,12 +2,13 @@ import { Product } from "src/domain/entities/product.entity";
 import { ProductRepository } from "src/infra/database/repositories/product-repository";
 
 export class InMemoryProductRepository implements ProductRepository {
+  public items: Array<Product> = [];
+  
   async create(product: Product): Promise<Product> {
     this.items.push(product);
 
     return product;
   }
-  public items: Array<Product> = [];
 
   async list(): Promise<[] | Product[]> {
     const products = this.items.filter((item) => item.isActive === true);

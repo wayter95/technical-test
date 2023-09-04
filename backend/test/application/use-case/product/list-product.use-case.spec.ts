@@ -1,7 +1,7 @@
 import { ListProductUseCase } from "src/application/use-cases/product/list-product.use-case";
 import { Product } from "src/domain/entities/product.entity";
 import { ProductRepository } from "src/infra/database/repositories/product-repository";
-import { InMemoryProductRepository } from "test/repositories/in-memory-product-repository";
+import { InMemoryProductRepository } from "test/repositories/in-memory-product.repository";
 
 describe("ListProductUseCase", () => {
   let productRepository: ProductRepository;
