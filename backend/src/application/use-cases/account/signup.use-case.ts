@@ -11,11 +11,13 @@ type SignUpUseCaseRequest = {
   password: string;
 }
 
+type SigInUseCaseResponse = Account | AccountByEmailAlreadyExistError
+
 @Injectable()
 export class SignUpUseCase {
   constructor (private readonly accountRepository: AccountRepository) {}
   
-  async handle(request: SignUpUseCaseRequest): Promise<Account | AccountByEmailAlreadyExistError> {
+  async handle(request: SignUpUseCaseRequest): Promise<SigInUseCaseResponse> {
     const accountAlreadyExist = await this.accountRepository.findByEmail(request.email);
 
     if(accountAlreadyExist) {
