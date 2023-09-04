@@ -4,31 +4,31 @@ O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os us
 ## 🛠️ Backend
 ### Tecnologias Utilizadas:
 
-> Framework: [NestJS](https://nestjs.com/)
+#### Framework: [NestJS](https://nestjs.com/)
 
-> Linguagem: TypeScript
+#### Linguagem: TypeScript
 
-> Documentação: [Swagger](https://swagger.io/)
+#### Documentação: [Swagger](https://swagger.io/)
 
-> ORM: [Prisma](https://www.prisma.io/)
+#### ORM: [Prisma](https://www.prisma.io/)
 
-> Banco de Dados: SQLite
+#### Banco de Dados: SQLite
 
-> Autenticação: JWT
+#### Autenticação: JWT
 
-> Containerização: [Docker](https://www.docker.com/)
+#### Containerização: [Docker](https://www.docker.com/)
 
-> Testes: [Jest](https://jestjs.io/pt-BR/)
+#### Testes: [Jest](https://jestjs.io/pt-BR/)
 
-> Arquitetura: Clean Architecture
+#### Arquitetura: Clean Architecture
 
 - A adoção da Clean Architecture permite uma separação de responsabilidades, tornando o código mais organizado e facilitando a manutenção. Ela promove a independência de frameworks e a inversão de dependências, resultando em um sistema desacoplado e testável.
 
-> Testes:
+#### Testes:
 
 - Os testes foram escritos focando nos use cases, garantindo que a lógica de negócios do aplicativo funcione como esperado.
 
-> Endpoints:
+#### Endpoints:
 
 - SignUp: Para criação de novos usuários.
 
@@ -42,12 +42,12 @@ O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os us
 ## 🖥️ Frontend
 ### Tecnologias Utilizadas:
 
-> Framework: [NextJS](https://nextjs.org/)
+#### Framework: [NextJS](https://nextjs.org/)
 
-> Linguagem: TypeScript
+#### Linguagem: TypeScript
 
-> Requisições HTTP: [Axios](https://axios-http.com/)
+#### Requisições HTTP: [Axios](https://axios-http.com/)
 
-> Rotas: Utilizadas para navegação e estruturação do projeto.
+#### Rotas: Utilizadas para navegação e estruturação do projeto.
 
-> Componentes: O uso de componentes permite a reutilização de código e facilita a manutenção.
+#### Componentes: O uso de componentes permite a reutilização de código e facilita a manutenção.
