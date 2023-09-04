@@ -25,6 +25,6 @@ export class SignUpBodyDto {
     example: '123456',
   })
   @IsNotEmpty()
-  @Length(6, 20)
+  @Length(6, 15)
   password: string;
 }
