@@ -5,6 +5,7 @@ export class ProductOrderMapper {
   static toDomain(raw: RawProductOrder): ProductOrder {
     const productOrder = new ProductOrder({
       orderId: raw.orderId,
+      amount: raw.amount,
       productId: raw.productId,
     }, raw.id)
 
@@ -14,6 +15,7 @@ export class ProductOrderMapper {
   static toPersistence(productOrder: ProductOrder): Prisma.ProductOrderCreateInput {
     return {
       id: productOrder.id,
+      amount: productOrder.amount,
       order: {
         connect: {
           id: productOrder.orderId

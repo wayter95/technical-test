@@ -4,12 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 interface IProductOrderProps {
   id?: string;
   orderId: string;
+  amount: number;
   productId: string;
 }
 
 export class ProductOrder {
   private readonly _id: string;
   private readonly _orderId: string;
+  private readonly _amount: number;
   private readonly _productId: string;
 
   constructor(
@@ -17,6 +19,7 @@ export class ProductOrder {
     id?: string,
   ) {
     this._id = id || uuidv4();
+    this._amount = props.amount;
     this._orderId = props.orderId;
     this._productId = props.productId
   }
@@ -24,6 +27,11 @@ export class ProductOrder {
   @ApiProperty()
   get id(): string {
     return this._id;
+  }
+
+  @ApiProperty()
+  get amount(): number {
+    return this._amount;
   }
 
   @ApiProperty()
