@@ -15,7 +15,14 @@ describe("ListProductUseCase", () => {
   });
   
   it("should return active products", async () => {
-    const product = await productRepository.create(new Product({name: "Teste", description: "Teste", value: 30, discountPercentage: 10, freightValue: 0}))
+    const product = await productRepository.create(new Product({
+      name: "Teste", 
+      description: "Teste", 
+      photoUrl: "photo_url",
+      value: 30, 
+      discountPercentage: 10, 
+      freightValue: 0
+    }));
 
     const products = await listProductUseCase.handle();
 
