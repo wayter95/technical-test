@@ -2,6 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { AccountRepository } from "src/infra/database/repositories/account-repository";
 import { AccountByEmailNotFoundError } from "./errors/account-by-email-not-found.error";
 import { Account } from "src/domain/entities/account.entity";
+import { compare } from 'bcrypt';
+import { InvalidPasswordError } from "./errors/invalid-password.error";
 
 type SigInUseCaseRequest = {
   email: string;
@@ -18,6 +20,12 @@ export class SigInUseCase {
 
     if(!account) {
       throw new AccountByEmailNotFoundError()
+    }
+
+    const isValidPassword = await compare(request.password, account.password);
+
+    if (!isValidPassword) {
+      throw new InvalidPasswordError()
     }
 
     return account;

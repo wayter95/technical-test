@@ -30,6 +30,7 @@ export class SignUpUseCase {
 
     const account = await this.accountRepository.create(newAccount);
 
+
     return account;
   }
 }
