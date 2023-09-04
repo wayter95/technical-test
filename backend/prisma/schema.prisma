@@ -12,13 +12,24 @@ datasource db {
 
 model Product {
   id                 String   @id @default(uuid())
-  name               String 
+  name               String
   description        String
-  photoUrl        String
+  photoUrl           String
   value              Float
   freightValue       Float
   discountPercentage Float
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   isActive           Boolean  @default(true)
+}
+
+model Account {
+  id        String   @id @default(uuid())
+  fullName  String
+  email     String
+  phone     String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isActive  Boolean  @default(true)
 }
