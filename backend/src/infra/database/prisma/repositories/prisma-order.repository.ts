@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma.service";
-import { OderRepository } from "../../repositories/order.repository";
+import { OrderRepository } from "../../repositories/order.repository";
 import { Order } from "src/domain/entities/order.entity";
 import { OrderMapper } from "../mapper/order.mapper";
 
 @Injectable()
-export class PrismaOrderRepository implements OderRepository {
+export class PrismaOrderRepository implements OrderRepository {
   constructor(private readonly prismaService: PrismaService) { }
 
   async create(order: Order): Promise<Order> {
