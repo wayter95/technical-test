@@ -15,7 +15,7 @@ type SignUpUseCaseRequest = {
 export class SignUpUseCase {
   constructor (private readonly accountRepository: AccountRepository) {}
   
-  async handle(request: SignUpUseCaseRequest): Promise<Account> {
+  async handle(request: SignUpUseCaseRequest): Promise<Account | AccountByEmailAlreadyExistError> {
     const accountAlreadyExist = await this.accountRepository.findByEmail(request.email);
 
     if(accountAlreadyExist) {
