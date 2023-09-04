@@ -1,7 +1,7 @@
 import { Prisma, ProductOrder as RawProductOrder } from '@prisma/client';
 import { ProductOrder } from 'src/domain/entities/product-order.entity';
 
-export class OrderMapper {
+export class ProductOrderMapper {
   static toDomain(raw: RawProductOrder): ProductOrder {
     const productOrder = new ProductOrder({
       orderId: raw.orderId,
