@@ -6,13 +6,18 @@ import { compare } from 'bcrypt';
 import { InvalidPasswordError } from "./errors/invalid-password.error";
 import { GenerateAuthToken } from "src/infra/providers/generate-auth-token";
 
+export interface ISuccessResponse {
+  token: string;
+  account: Account;
+}
+
 type SigInUseCaseRequest = {
   email: string;
   password: string;
 }
 
 type SigInUseCaseResponse =
-  { token: string, account: Account }
+  ISuccessResponse
   | AccountByEmailNotFoundError
   | InvalidPasswordError;
 @Injectable()

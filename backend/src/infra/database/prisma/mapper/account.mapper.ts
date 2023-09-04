@@ -13,6 +13,18 @@ export class AccountMapper {
     return account;
   }
 
+  static toDTO(account: Account): any {
+    return {
+      id: account.id,
+      fullName: account.fullName,
+      email: account.email,
+      phone: account.phone,
+      isActive: account.isActive,
+      createdAt: account.createdAt,
+      updatedAt: account.updatedAt,
+    };
+  }
+
   static toPersistence(account: Account): Prisma.AccountCreateInput {
     return {
       id: account.id,
