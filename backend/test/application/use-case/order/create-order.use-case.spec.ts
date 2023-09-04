@@ -1,5 +1,6 @@
 import { CreateOrderUseCase } from "src/application/use-cases/order/create-order.use-case";
 import { ProductByIdNotFoundError } from "src/application/use-cases/order/errors/product-by-id-not-found.error";
+import { Product } from "src/domain/entities/product.entity";
 import { OrderRepository } from "src/infra/database/repositories/order.repository";
 import { ProductOrderRepository } from "src/infra/database/repositories/product-order.repository";
 import { ProductRepository } from "src/infra/database/repositories/product-repository";
@@ -21,6 +22,31 @@ describe("CreateOrderUseCase", () => {
 
     createOrderUseCase = new CreateOrderUseCase(orderRepository, productOrderRepository, productRepository);
   });
+
+  it("should return successfully for create order", async () => {
+    const product = await productRepository.create(new Product({
+      name: "Teste",
+      description: "Teste",
+      photoUrl: "photo_url",
+      value: 30,
+      discountPercentage: 10,
+      freightValue: 0
+    }));
+
+    const request = {
+      accountId: "valid_user",
+      products: [
+        {
+          amount: 1,
+          id: product.id
+        }
+      ]
+    }
+
+    const result = await createOrderUseCase.handle(request);
+
+    expect(result.accountId).toBe(request.accountId)
+  })
 
   it("should return 409 if product by id not found", async () => {
     const request = {
