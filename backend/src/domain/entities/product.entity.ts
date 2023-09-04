@@ -1,7 +1,7 @@
-import { ApiProperty, ApiResponse } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { v4 as uuidv4 } from 'uuid';
 
-interface ProductProps {
+interface IProductProps {
   id?: string;
   name: string;
   description: string;
@@ -25,7 +25,7 @@ export class Product {
   private readonly _isActive: boolean;
 
   constructor(
-    props: ProductProps,
+    props: IProductProps,
     id?: string,
   ) {
     this._id = id || uuidv4();
