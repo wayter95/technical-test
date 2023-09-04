@@ -46,7 +46,7 @@ describe("FindProductByIdUseCase", () => {
       isActive: false
     });
 
-    const result = await productRepository.create(inactiveProduct);
+    await productRepository.create(inactiveProduct);
 
     await expect(findProductByIdUseCase.handle(inactiveProduct.id)).rejects.toThrow(InactiveProductError);
   });
