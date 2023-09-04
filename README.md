@@ -22,23 +22,23 @@ O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os us
 
 #### Arquitetura: Clean Architecture
 
-- A adoção da Clean Architecture permite uma separação de responsabilidades, tornando o código mais organizado e facilitando a manutenção. Ela promove a independência de frameworks e a inversão de dependências, resultando em um sistema desacoplado e testável.
+> A adoção da Clean Architecture permite uma separação de responsabilidades, tornando o código mais organizado e facilitando a manutenção. Ela promove a independência de frameworks e a inversão de dependências, resultando em um sistema desacoplado e testável.
 
 #### Testes:
 
-- Os testes foram escritos focando nos use cases, garantindo que a lógica de negócios do aplicativo funcione como esperado.
+> Os testes foram escritos focando nos use cases, garantindo que a lógica de negócios do aplicativo funcione como esperado.
 
 #### Endpoints:
 
-- SignUp: Para criação de novos usuários.
+> SignUp: Para criação de novos usuários.
 
-- SignIn: Para autenticação dos usuários.
+> SignIn: Para autenticação dos usuários.
 
-- ProductList: Listagem de todos os produtos.
+> ProductList: Listagem de todos os produtos.
 
-- ProductById: Detalhes de um produto específico através de seu ID.
+> ProductById: Detalhes de um produto específico através de seu ID.
 
-- CreateOrder: Criação de pedidos.
+> CreateOrder: Criação de pedidos.
 ## 🖥️ Frontend
 ### Tecnologias Utilizadas:
 
@@ -48,6 +48,8 @@ O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os us
 
 #### Requisições HTTP: [Axios](https://axios-http.com/)
 
-#### Rotas: Utilizadas para navegação e estruturação do projeto.
+#### Rotas: 
+> Utilizadas para navegação e estruturação do projeto.
 
-#### Componentes: O uso de componentes permite a reutilização de código e facilita a manutenção.
+#### Componentes: 
+> O uso de componentes permite a reutilização de código e facilita a manutenção.
