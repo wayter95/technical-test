@@ -4,6 +4,8 @@
   padding: 1rem 5rem;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--gray-100);
+  border-bottom: 1px solid var(--gray-500);
 }
 
 .logo img {
@@ -21,7 +23,7 @@
 
 .btnHeader {
   background: none;
-  border:  none;
+  border: none;
   outline: none;
   display: flex;
   justify-content: space-between;
@@ -31,7 +33,7 @@
   transition: color .2s;
 }
 
-.btnHeader:hover{
+.btnHeader:hover {
   color: var(--orange-500);
 }
 
