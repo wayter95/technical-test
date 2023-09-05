@@ -23,6 +23,10 @@
   --gray-800: #222222;
 }
 
+body {
+  background: var(--white);
+}
+
 body,
 input,
 textarea,
