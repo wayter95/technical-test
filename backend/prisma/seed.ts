@@ -14,7 +14,7 @@ const productData: IProduct[] = [
   {
     name: "Tênis social",
     description: "Sapatenis Masculino Branco Tênis Casual FLOW para Dia a Dia - Camursa",
-    photoUrl: "https://onedrive.live.com/embed?resid=6C7FE151DA3BD5E8%2119237&authkey=%21AACFUeIkf0PW1Cw&width=660",
+    photoUrl: "https://res.cloudinary.com/ddk6md0qd/image/upload/v1693926523/image-1.png",
     value: 300,
     discountPercentage: 10,
     freightValue: 0,
@@ -22,7 +22,7 @@ const productData: IProduct[] = [
   {
     name: "Tênis social",
     description: "Sapatenis Masculino Branco Tênis Casual FLOW para Dia a Dia - Camursa",
-    photoUrl: "https://onedrive.live.com/embed?resid=6C7FE151DA3BD5E8%2119236&authkey=%21APfN4v9bVwkLzho&height=660",
+    photoUrl: "https://res.cloudinary.com/ddk6md0qd/image/upload/v1693926524/image-2.png",
     value: 300,
     discountPercentage: 10,
     freightValue: 0,
@@ -30,7 +30,7 @@ const productData: IProduct[] = [
   {
     name: "Tênis social",
     description: "Sapatenis Masculino Branco Tênis Casual FLOW para Dia a Dia - Camursa",
-    photoUrl: "https://onedrive.live.com/embed?resid=6C7FE151DA3BD5E8%2119235&authkey=%21AENi8PWf0serqUs&width=660",
+    photoUrl: "https://res.cloudinary.com/ddk6md0qd/image/upload/v1693926524/image-3.png",
     value: 300,
     discountPercentage: 10,
     freightValue: 0,
