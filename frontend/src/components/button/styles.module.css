@@ -1,0 +1,21 @@
+.container {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  transition: all .2s;
+}
+
+.prymary {
+  background-color: var(--orange-500);
+  color: var(--white);
+}
+
+.secondary {
+  background-color: var(--orange-100);
+  color: var(--orange-500);
+}
+
+.container:hover {
+  filter: brightness(0.9);
+}
