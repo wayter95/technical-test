@@ -1,0 +1,46 @@
+.content {
+  width: 100%;
+  display: flex;
+  padding: 1rem 5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  max-height: 5rem;
+}
+
+.buttonsContent {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnHeader {
+  background: none;
+  border:  none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: color .2s;
+}
+
+.btnHeader:hover{
+  color: var(--orange-500);
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 1rem 2rem;
+  }
+
+  .buttonsContent span {
+    display: none;
+  }
+}
