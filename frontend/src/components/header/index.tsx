@@ -3,8 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import styles from './styles.module.css'
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const route = useRouter();
 
   return (
     <header>
@@ -16,7 +18,7 @@ const Header = () => {
         </div>
 
         <div className={styles.buttonsContent}>
-          <button type="button" className={styles.btnHeader}>
+          <button type="button" className={styles.btnHeader} onClick={() => route.push('/cart', { scroll: false })}>
             <Image src="/icons/outline-box.svg" width={20} height={20} alt="Technical Test" />
             <span>Carrinho</span>
           </button>
