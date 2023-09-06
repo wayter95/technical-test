@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  outline: none;
+}
+
+.container button {
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  background: none;
+  border: none;
+}
+
+.container button svg {
+  font-size: 1.5rem;
+  color: var(--orange-500);
+}
