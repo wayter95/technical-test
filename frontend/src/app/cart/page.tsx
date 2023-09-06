@@ -8,12 +8,20 @@ import { IProductCartModel, getCart, removeFromCart } from '@/helpers/cart';
 import { FiAlertTriangle } from "react-icons/fi";
 import { formatToBRL } from '@/utils/format-to-brl';
 import Link from 'next/link';
+import { useAuth } from '@/hooks/auth-hook';
+import { toast } from 'react-toastify';
+import { api } from '@/services/api';
+import { Modal } from '@/components/modal';
+import Image from 'next/image';
 
 export default function Cart() {
+  const { isAuthenticated, account } = useAuth();
+
   const [products, setProducts] = useState<IProductCartModel[]>([]);
   const [subTotal, setSubTotal] = useState(0);
   const [freight, setFreight] = useState(0);
   const [totalWithDiscount, setTotalWithDiscount] = useState(0);
+  const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
   const calculateDiscountedPrice = (price: number, discountPercent: number) => {
     return price - (price / 100 * discountPercent);
@@ -51,6 +59,24 @@ export default function Cart() {
       return product;
     });
     setProducts(updatedProducts);
+  }
+
+
+  const handleCreateOrder = async () => {
+    if (!isAuthenticated) {
+      toast.error("Você precisa estar logado para finalizar o pedido!")
+      return;
+    }
+
+    try {
+      await api.post('order', {products, accountId: account?.id})
+
+      setIsOpenModalSuccess(true);
+      localStorage.removeItem("@TECHNICALTEST:cart");
+      setProducts([]);
+    } catch (error) {
+      toast.error("Erro ao criar ordem");
+    }
   }
 
   return (
@@ -100,10 +126,25 @@ export default function Cart() {
               <h4 className={styles.divider}>ou <strong>6x de {formatToBRL(subTotal / 6)}</strong> sem juros</h4>
             </li>
           </ul>
-          <Button title='Finalizar pedido' variant='primary' onClick={() => { }} />
+          <Button title='Finalizar pedido' variant='primary' onClick={() => handleCreateOrder()} />
           <Link className={styles.buyer} href="/">Continuar comprando</Link>
         </div>
       </div>
+      <Modal
+        title='Sucesso!'
+        iconPath='/icons/outline-success.svg'
+        isOpen={isOpenModalSuccess}
+        onRequestClose={() => setIsOpenModalSuccess(false)}
+      >
+        <div className={styles.successContent}>
+          <Image src="/images/finished-success.svg" width={300} height={300} alt='success' />
+          <div className={styles.msgContent}>
+          <h1>Seu pedido foi concluído!</h1>
+          <p>Retornaremos com atualizações em seu e-mail.</p>
+          </div>
+          <Button title='Entendi' variant='primary' type='button' onClick={() => setIsOpenModalSuccess(false)} />
+        </div>
+      </Modal>
     </div>
   )
 }

@@ -62,7 +62,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const response = await api.post("/account/signin", { email, password });
 
       const { token, account } = response.data.data;
-      console.log(account);
       localStorage.setItem("@TECHNICALTEST:token", token);
       localStorage.setItem("@TECHNICALTEST:account", JSON.stringify(account));
 
