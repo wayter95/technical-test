@@ -27,6 +27,8 @@ export class CreateOrderUseCase {
   ) { }
 
   async handle(request: CreateOrderUseCaseRequest): Promise<CreateOrderUseCaseResponse> {
+    console.log(request);
+    
     const newOrder = new Order(request)
 
     const order = await this.orderRepository.create(newOrder);

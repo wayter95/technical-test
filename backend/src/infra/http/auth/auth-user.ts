@@ -1,3 +1,3 @@
 export type AuthUser = {
-  accountId: string;
+  userId: string;
 };
