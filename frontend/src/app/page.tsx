@@ -30,10 +30,7 @@ export default function Home() {
           products.map((product) => (
             <ProductCard
               key={product.id}
-              id={product.id}
-              name={product.name}
-              photoUrl={product.photoUrl}
-              price={product.value}
+              product={product}
             />
           ))
           : 

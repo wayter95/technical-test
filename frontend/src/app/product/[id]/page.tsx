@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import Image from "next/image";
 import { formatToBRL } from "@/utils/format-to-brl";
 import { Button } from "@/components/button";
+import { addToCart } from "@/helpers/cart";
 
 export default function Product({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<IProductModel>()
@@ -64,7 +65,7 @@ export default function Product({ params }: { params: { id: string } }) {
                 <p>em <span>06x</span> sem juros</p>
               </div>
             </div>
-            <Button title="Adicionar ao carrinho" variant="primary" />
+            <Button onClick={() => addToCart(product)} title="Adicionar ao carrinho" variant="primary" />
           </div>
         </div>
       }

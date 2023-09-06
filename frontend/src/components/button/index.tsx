@@ -7,9 +7,9 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-const Button = ({ title, variant, loading }: IButtonProps) => {
+const Button = ({ title, variant, loading, ...rest }: IButtonProps) => {
   return (
-    <button disabled={loading} className={`${styles.container} ${styles[variant]}`}>
+    <button className={`${styles.container} ${styles[variant]}`} {...rest}>
       {loading ? "Carregando" : title}
     </button>
   )
