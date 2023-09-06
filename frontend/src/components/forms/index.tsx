@@ -4,8 +4,12 @@ import { SignUpForm } from "./signup-form"
 import { SignInForm } from "./signin-form"
 import styles from "./styles.module.css";
 
-const Forms = () => {
-  const [showModal, setShowModal] = useState('register')
+interface IFormProps {
+  closeModal: () => void;
+}
+
+const Forms = ({ closeModal }: IFormProps) => {
+  const [showModal, setShowModal] = useState('authentication')
 
   const handleChangeModalToRegister = () => {
     setShowModal("register");
@@ -20,14 +24,14 @@ const Forms = () => {
       {
         showModal === 'register' &&
         <>
-          <SignUpForm />
+          <SignUpForm closeModal={closeModal} />
           <span>Já tenho conta! <strong onClick={() => handleChangeModalToAuthenticaiton()}>acessar</strong></span>
         </>
       }
       {
         showModal === 'authentication' &&
         <>
-          <SignInForm />
+          <SignInForm closeModal={closeModal}/>
           <span>Ainda não tenho conta! <strong onClick={() => handleChangeModalToRegister()}>cadastrar</strong></span>
         </>
       }
