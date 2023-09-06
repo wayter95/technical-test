@@ -5,32 +5,43 @@ import Image from 'next/image';
 import { useState } from 'react';
 import {AiOutlinePlus} from "react-icons/ai";
 import {GrFormSubtract} from "react-icons/gr";
+import { removeFromCart, updateProductAmount } from '@/helpers/cart';
 
 interface IProductCartCard {
+  id: string;
   photoUrl: string;
   price: number;
+  initialAmount: number;
   discountPercent: number;
   description: string;
-  handleRemove: () => void;
-  handleIncrement: () => void;
+  handleRemoveProduct: (id: string) => void;
+  onAmountChange: (id: string, newAmount: number) => void;
 }
 
 const ProductCartCard = ({
+  initialAmount,
+  id,
   description,
   discountPercent,
   photoUrl,
   price,
-  handleIncrement,
-  handleRemove,
+  handleRemoveProduct,
+  onAmountChange,
 }: IProductCartCard) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(initialAmount);
 
   const handleIncrementAmount = () => {
-    setAmount(amount + 1)
+    const newAmount = amount + 1;
+    setAmount(newAmount);
+    onAmountChange(id, newAmount);
+    updateProductAmount(id, newAmount);
   }
 
   const handleDecrementAmount = () => {
-    if(amount > 0) setAmount(amount - 1)
+    const newAmount = amount > 0 ? amount - 1 : 0;
+    setAmount(newAmount);
+    onAmountChange(id, newAmount);
+    updateProductAmount(id, newAmount);
   }
 
   return (
@@ -48,7 +59,7 @@ const ProductCartCard = ({
             </div>
 
             <div className={styles.amountContent}>
-              <button className={styles.btnRemove} onClick={handleRemove}>
+              <button className={styles.btnRemove} onClick={(e) => handleRemoveProduct(id)}>
                 <Image width={30} height={30} src="/icons/outline-trash.svg" alt='remove-icon' />
               </button>
 
