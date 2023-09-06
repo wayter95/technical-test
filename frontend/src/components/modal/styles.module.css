@@ -1,0 +1,30 @@
+.modalHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.title span {
+  font-size: 1.4rem;
+  color: var(--gray-500);
+}
+
+.modalHeader button {
+  font-size: 1.4rem;
+  border: 0;
+  background: transparent;
+  transition: color 0.2s;
+  color: var(--black);
+}
+
+.modalHeader button:hover {
+  color: var(--orange-500);
+}
