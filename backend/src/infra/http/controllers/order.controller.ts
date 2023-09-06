@@ -19,11 +19,11 @@ export class OrderController {
   async create(
     @Body() body: CreateOrderBodyDTO,
     @Res() response: Response,
-    @CurrentUser() user: { accountId: string },
+    @CurrentUser() user: { userId: string },
   ) {
-    const { products } = body;
+    const { products, accountId } = body;
 
-    const result = await this.createOrderUseCase.handle({ accountId: user.accountId, products })
+    const result = await this.createOrderUseCase.handle({ accountId, products })
 
     if (result instanceof Order) {
       return response.status(201).send()
