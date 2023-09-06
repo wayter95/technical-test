@@ -1,6 +1,11 @@
 # 🚀 Projeto Marketplace
 O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os usuários podem visualizar produtos, adicionar ao carrinho e realizar pedidos após autenticação.
 
+### Para rodar as aplicações locais siga as instruções dos links abaixo: 
+> [***backend*** ](https://github.com/wayter95/technical-test/blob/develop/backend/README.md)
+
+> [***frontend*** ](https://github.com/wayter95/technical-test/blob/develop/frontend/README.md)
+
 ## 🛠️ Backend
 ### Tecnologias Utilizadas:
 
@@ -30,15 +35,15 @@ O objetivo deste projeto é desenvolver uma plataforma de marketplace onde os us
 
 #### Endpoints:
 
-> SignUp: Para criação de novos usuários.
+> SignUp: Para criação de novos usuários. [requerimentos](https://github.com/wayter95/technical-test/blob/develop/backend/documentation/account/signup.md)
 
-> SignIn: Para autenticação dos usuários.
+> SignIn: Para autenticação dos usuários.[requerimentos](https://github.com/wayter95/technical-test/blob/develop/backend/documentation/account/signin.md)
 
-> ProductList: Listagem de todos os produtos.
+> ProductList: Listagem de todos os produtos.[requerimentos](https://github.com/wayter95/technical-test/blob/develop/backend/documentation/product/list-products.md)
 
-> ProductById: Detalhes de um produto específico através de seu ID.
+> ProductById: Detalhes de um produto específico através de seu ID.[requerimentos](https://github.com/wayter95/technical-test/blob/develop/backend/documentation/product/find-product.by-id.md)
 
-> CreateOrder: Criação de pedidos.
+> CreateOrder: Criação de pedidos.[requerimentos](https://github.com/wayter95/technical-test/blob/develop/backend/documentation/order/create-order.md)
 ## 🖥️ Frontend
 ### Tecnologias Utilizadas:
 

@@ -1,73 +1,96 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🚀 Teste Técnico Backend
+Este backend foi desenvolvido para garantir um alto padrão de qualidade, combinando as melhores ferramentas e práticas da indústria.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 🛠 Pré-requisitos
+- Git
+- Node.js
+- npm ou yarn
+- Docker (não obrigatorio)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Como decolar com o projeto
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+1. **Clone o repositório**:
 
 ```bash
-$ yarn install
+git clone git@github.com:wayter95/technical-test.git
 ```
 
-## Running the app
+2. **Navegue até a pasta do frontend**
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+cd backend
 ```
 
-## Test
+3. **Instale as dependências:**
+
+- Com npm:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+npm install
 ```
 
-## Support
+- Ou com o yarn, se preferir:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+yarn install
+```
 
-## Stay in touch
+4. **Configuração do banco de dados:**
+> Para testar e desenvolver o projeto eu utilizei o "sqlite" junto ao prisma ORM, para utilizar o "sqlite" no projeto basta seguir os passos abaixo:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Use o "sqlite" com Prisma ORM para gerenciar o banco de dados.
+- Se na pasta prisma existir um arquivo "developer.db", você pode excluí-lo se quiser.
+- Atualize ou crie o banco de dados:
 
-## License
+```bash
+yarn prisma db push
+```
 
-Nest is [MIT licensed](LICENSE).
+- Popule a tabela de produtos:
+
+```bash
+yarn prisma db seed
+```
+
+- Caso faça alterações, execute:
+
+```bash
+yarn prisma generate
+```
+
+- Para visualizar o banco via Prisma Studio, use:
+
+```bash
+yarn prisma studio
+```
+
+5. **Configuração do ambiente:**
+> Copie o conteúdo de .env.example para um novo arquivo .env e preencha com as informações necessárias.
+
+- Exemplo: 
+
+```json
+JWT_SECRET_KEY="JWT_SECRET_KEY"
+```
+
+5. **Execute a aplicação:**
+
+- Usando npm:
+```bash
+npm run dev 
+# ou 
+yarn dev  
+```
+
+6. **Executando com docker**
+- Se tiver o Docker instalado, depois de seguir os passos anteriores, execute:
+
+```bash
+docker-compose up -d
+```
+
+### Pronto! Agora você pode testar o backend.
+
+
+
+
